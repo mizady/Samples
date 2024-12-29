@@ -177,6 +177,17 @@ namespace nanoFramework.TestFramework.Test
             Assert.EndsWith(contains, tocontains);
         }
 
+        [TestMethod]
+        public void TestAssertMultiple()
+        {
+            Assert.Multiple(
+                () => Assert.IsTrue(true),
+                () => Assert.IsFalse(false),
+                () => Assert.ThrowsException(typeof(ArgumentOutOfRangeException), () => 
+                    throw new ArgumentOutOfRangeException(), "Expected ArgumentOutOfRange Exception")
+                );
+        }
+
         [Setup]
         public void RunSetup()
         {
